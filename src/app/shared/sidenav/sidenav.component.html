@@ -1,0 +1,42 @@
+<mat-drawer-container
+  [hasBackdrop]="isSmallScreen$ | async"
+  [class.small-width]="isSmallScreen$ | async"
+  #sidenavContainer
+>
+  <mat-drawer
+    #drawer
+    [mode]="(isSmallScreen$ | async) ? 'over' : 'side'"
+    opened="opened"
+    *ngIf="isLogged$ | async"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+  >
+    <a class="logo-img" href="#">
+      <img
+        style="min-width: 160px; width: 160px"
+        [class.d-none]="!drawer.opened"
+        src="../../../assets/images/logo-vendor/logo-tipo-2.svg"
+      />
+      <img
+        style="min-width: 40px; width: 40px"
+        [class.d-none]="drawer.opened"
+        src="../../../assets/images/logo-vendor/simbolo.svg"
+      />
+    </a>
+    <div class="menu-content">
+      <app-menu-item
+        *ngFor="let menuItem of menuItems; let i = index"
+        [sidenavOpened]="drawer.opened"
+        [selected]="selectedItem === i"
+        [menuItem]="menuItem"
+        (clickItem)="onItemClicked(i)"
+      ></app-menu-item>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content
+    [class.p-0]="(isLogged$ | async) === false"
+    [class.m-0]="(isLogged$ | async) === false"
+  >
+    <ng-content></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

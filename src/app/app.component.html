@@ -1,0 +1,12 @@
+<app-sidenav #sidenav>
+  <div [class.main-container]="isLogged$ | async">
+    <app-header
+      *ngIf="isLogged$ | async"
+      (toggleSidenav)="sidenav.toggleSidenav()"
+    ></app-header>
+    <main [class.p-0]="(isLogged$ | async) === false">
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer *ngIf="isLogged$ | async"></app-footer>
+  </div>
+</app-sidenav>

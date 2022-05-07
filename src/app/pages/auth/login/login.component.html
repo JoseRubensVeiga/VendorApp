@@ -1,0 +1,39 @@
+<div class="login-form">
+  <h3 class="auth-title">Entre na sua conta</h3>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="form-inputs-container">
+      <mat-form-field appearance="outline" class="w-200">
+        <mat-label>E-mail</mat-label>
+        <input matInput formControlName="email" />
+        <mat-error>Este campo é obrigatório</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-200">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" formControlName="password" />
+        <mat-error>Este campo é obrigatório</mat-error>
+      </mat-form-field>
+
+      <p class="text-end">
+        <a id="recovery-pass-router" routerLink="/auth/recovery-password"
+          >Esqueci minha senha</a
+        >
+      </p>
+
+      <button
+        id="sign-in-button"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="mt-3"
+      >
+        Entrar
+      </button>
+
+      <div class="text-muted text-center mt-5">
+        Ainda não tem uma conta?
+        <a id="sign-up-router" routerLink="/auth/sign-up">Registre-se</a>
+      </div>
+    </div>
+  </form>
+</div>

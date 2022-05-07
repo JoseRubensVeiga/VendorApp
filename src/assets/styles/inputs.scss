@@ -1,0 +1,97 @@
+@import './variables.scss';
+
+.mat-form-field-outline {
+  transition: 0.3s !important;
+}
+
+.mat-form-field-outline.mat-form-field-outline-thick {
+  border-radius: 5px;
+}
+
+mat-form-field {
+  &.mat-focused {
+    &.mat-form-field-appearance-outline .mat-form-field-outline {
+      color: $vendor-primary-normal;
+    }
+
+    &.ng-invalid.ng-touched {
+      .mat-form-field-outline {
+        box-shadow: 0px 4px 5px -2px $vendor-danger-dark;
+      }
+    }
+    &:not(.ng-invalid.ng-touched) {
+      .mat-form-field-label {
+        color: $vendor-primary-normal !important;
+      }
+    }
+  }
+
+  &.ng-invalid.ng-touched .mat-icon.material-icons {
+    color: $vendor-danger-dark;
+  }
+
+  &.ng-valid.ng-touched .mat-icon.material-icons {
+    color: $vendor-success-dark;
+  }
+}
+
+.mat-form-field-prefix .mat-icon,
+.mat-form-field-suffix .mat-icon {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.mat-form-field-appearance-outline .mat-form-field-subscript-wrapper {
+  padding: 0 0 0 5px !important;
+  margin-top: 5px !important;
+}
+
+input-slide-toggle mat-slide-toggle {
+  .mat-slide-toggle-content {
+    font-family: Poppins, sans-serif;
+  }
+  &.mat-slide-toggle {
+    height: 30px !important;
+  }
+  .mat-slide-toggle-bar {
+    width: 44px;
+    height: 26px;
+    border-radius: 13px;
+  }
+
+  .mat-slide-toggle-thumb-container {
+    top: 3px;
+    left: 4px;
+  }
+
+  &.mat-slide-toggle:not(.mat-checked) {
+    .mat-slide-toggle-content {
+      color: $vendor-gray-dark;
+      font-weight: 600;
+    }
+  }
+
+  &.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: white;
+  }
+
+  &.mat-slide-toggle.mat-checked {
+    .mat-slide-toggle-content {
+      color: $vendor-info-dark;
+      font-weight: 700;
+    }
+
+    .mat-slide-toggle-bar {
+      background-color: $vendor-info-dark;
+    }
+  }
+
+  .mat-slide-toggle-content {
+    margin-left: 10px;
+  }
+}
+
+mat-checkbox.mat-checkbox-checked.mat-accent {
+  .mat-checkbox-background {
+    background-color: $vendor-primary-normal;
+  }
+}

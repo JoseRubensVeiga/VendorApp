@@ -1,0 +1,50 @@
+<div *ngIf="menuItem" [class.drawer-closed]="!sidenavOpened">
+  <a
+    mat-button
+    class="menu-item-button"
+    *ngIf="!hasChildren"
+    [routerLink]="menuItem.url"
+  >
+    <div class="menu-item">
+      <div class="d-flex align-items-center">
+        <mat-icon>{{ menuItem.icon }}</mat-icon>
+        <div class="menu-item-label">{{ menuItem.label }}</div>
+      </div>
+      <mat-icon [class.expand-closed]="!selected" *ngIf="hasChildren">
+        expand_less
+      </mat-icon>
+    </div>
+  </a>
+
+  <button
+    mat-button
+    class="menu-item-button"
+    *ngIf="hasChildren"
+    (click)="emitClickItem()"
+  >
+    <div class="menu-item">
+      <div class="d-flex align-items-center">
+        <mat-icon>{{ menuItem.icon }}</mat-icon>
+        <div class="menu-item-label">{{ menuItem.label }}</div>
+      </div>
+      <mat-icon [class.expand-closed]="!selected"> expand_less </mat-icon>
+    </div>
+  </button>
+
+  <div
+    class="sub-menu-container"
+    [ngStyle]="subMenuStyle"
+    [class.closed]="!selected"
+  >
+    <a
+      mat-button
+      class="sub-menu-item-button"
+      *ngFor="let child of children"
+      [routerLink]="child.url"
+    >
+      <div class="menu-item">
+        <div class="menu-item-label">{{ child.label }}</div>
+      </div>
+    </a>
+  </div>
+</div>
